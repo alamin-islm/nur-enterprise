@@ -1,1 +1,102 @@
-login_screen.dart
+import 'package:flutter/material.dart';
+import 'dashboard_screen.dart';
+
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+
+  final TextEditingController userController = TextEditingController();
+  final TextEditingController passController = TextEditingController();
+
+  String role = "Dealer";
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Nur Enterprise Login"),
+        centerTitle: true,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+
+            const SizedBox(height:40),
+
+            const Icon(
+              Icons.account_circle,
+              size:100,
+              color:Colors.green,
+            ),
+
+            const SizedBox(height:20),
+
+            TextField(
+              controller: userController,
+              decoration: const InputDecoration(
+                labelText: "User ID",
+                border: OutlineInputBorder(),
+              ),
+            ),
+
+            const SizedBox(height:15),
+
+            TextField(
+              controller: passController,
+              obscureText: true,
+              decoration: const InputDecoration(
+                labelText: "Password",
+                border: OutlineInputBorder(),
+              ),
+            ),
+
+            const SizedBox(height:15),
+
+            DropdownButtonFormField(
+              value: role,
+              items: const [
+                DropdownMenuItem(
+                  value: "Admin",
+                  child: Text("Admin"),
+                ),
+                DropdownMenuItem(
+                  value: "Dealer",
+                  child: Text("Dealer"),
+                ),
+              ],
+              onChanged: (value){
+                setState(() {
+                  role=value!;
+                });
+              },
+            ),
+
+            const SizedBox(height:30),
+
+            SizedBox(
+              width: double.infinity,
+              height:50,
+              child: ElevatedButton(
+                onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:(context)=>const DashboardScreen(),
+                    ),
+                  );
+                },
+                child: const Text("LOGIN"),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
