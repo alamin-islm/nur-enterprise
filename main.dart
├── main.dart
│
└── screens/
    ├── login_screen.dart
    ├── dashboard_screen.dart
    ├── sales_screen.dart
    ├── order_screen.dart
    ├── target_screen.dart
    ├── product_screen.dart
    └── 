@@ -1,0 +1,12 @@
+lib/
+│
+├── main.dart
+│
+└── screens/
+    ├── login_screen.dart
+    ├── dashboard_screen.dart
+    ├── sales_screen.dart
+    ├── order_screen.dart
+    ├── target_screen.dart
+    ├── product_screen.dart
+    └── report_screen.dart
